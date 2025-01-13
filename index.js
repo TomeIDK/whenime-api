@@ -5,7 +5,6 @@ const path = require('path');
 
 const usersRoutes = require('./routes/users');
 const newsRoutes = require('./routes/news');
-const faqRoutes = require('./routes/faq');
 const formsRoutes = require("./routes/forms");
 require("dotenv").config();
 
@@ -20,7 +19,6 @@ app.use(express.static(path.join(__dirname, "public")));
 // Mount routes
 app.use("/users", usersRoutes);
 app.use("/news", newsRoutes);
-app.use("/faq", faqRoutes);
 app.use("/forms", formsRoutes);
 
 
