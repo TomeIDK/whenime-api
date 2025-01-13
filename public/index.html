@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Whenime API</title>
+  </head>
+  <body>
+    <h1>Whenime API</h1>
+
+    <!-- User Routes -->
+    <div class="category">
+      <h2>User Routes</h2>
+      <div class="list">
+        <a href="/users">GET /users - Get all users</a>
+        <a href="/users/1">GET /users/{id} - Get user by ID</a>
+      </div>
+    </div>
+
+    <!-- News Routes -->
+    <div class="category">
+      <h2>News Routes</h2>
+      <div class="list">
+        <a href="/news">GET /news - Get all news</a>
+        <a href="/news/5">GET /news/{id} - Get news by ID</a>
+      </div>
+    </div>
+
+    <!-- FAQ Routes -->
+    <div class="category">
+      <h2>FAQ Routes</h2>
+      <div class="list">
+        <a href="/faq">GET /faq - Get all faq categories & questions</a>
+        <a href="/faq/categories"
+          >GET /faq/categories - Get all faq categories</a
+        >
+        <a href="/faq/questions">GET /faq/questions - Get all faq questions</a>
+        <a href="/faq/categories/1"
+          >GET /faq/categories/{id} - Get faq category by ID</a
+        >
+        <a href="/faq/questions/1"
+          >GET /faq/questions/{id} - Get faq questions by ID</a
+        >
+      </div>
+    </div>
+
+    <!-- Contact Form Routes -->
+    <div class="category">
+      <h2>Contact Form Routes</h2>
+      <div class="list">
+        <a href="/forms">GET /forms - Get all contact forms</a>
+        <a href="/forms/1">GET /forms/{id} - Get form by ID</a>
+      </div>
+    </div>
+  </body>
+</html>
