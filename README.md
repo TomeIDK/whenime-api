@@ -8,7 +8,7 @@ It is recommended to use Postman to access the routes. If you don't have Postman
 4. Copy the `.env.example` and rename it to `.env`
 5. Enter all necessary database credentials. Normally using the same ones as in the main Whenime repository should be sufficient  
    **Do not copy Whenime's .env! Only the necessary values should be added to their corresponding fields in the API's .env!**
-6. Verify your setup by using `node index.js` in your terminal. If everything is done correctly you should see the following messages
+6. Verify your setup by using `node index.js` in your terminal. If everything is done correctly you should see the following messages  
    ![Server started on http://127.0.0.1:3000 Connected to the database.](https://i.gyazo.com/3c079e6dd744809bf4ee4d3eef3b0f20.png)
 7. Click the link that pops up in the terminal to view the API documentation.
 8. Congratulations, you have successfully installed the API!
