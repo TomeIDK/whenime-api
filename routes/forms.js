@@ -26,11 +26,6 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  // Model Input
-  //   "name": "Huge problem",
-  //   "email": "test@test.com",
-  //   "subject": "There is a huge problem",
-  //   "message": "Haha jk, everything is fine there is no problem gotcha."
   const validationErrors = validationService.validateForm(req.body, true);
 
   if (validationErrors) {

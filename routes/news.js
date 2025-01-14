@@ -26,10 +26,6 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  // Model Input
-  //   "title": "Interesting news piece",
-  //   "image": "header.png",
-  //   "content": "This is an article that talks about things which are interesting and topical."
   const validationErrors = validationService.validateNews(req.body, true);
 
   if (validationErrors) {

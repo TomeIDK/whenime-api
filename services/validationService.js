@@ -150,7 +150,7 @@ const validationService = {
     // Validate name
     if (!form.name && isNew) {
       errors.name = "Name is required.";
-    } else  if (form.name) {
+    } else if (form.name) {
       if (typeof form.name !== "string") {
         errors.name = "Name must be a string.";
       } else {
@@ -191,7 +191,7 @@ const validationService = {
     // Validate subject
     if (!form.subject && isNew) {
       errors.subject = "Subject is required.";
-    } else  if (form.subject) {
+    } else if (form.subject) {
       if (typeof form.subject !== "string") {
         errors.subject = "Subject must be a string.";
       } else {
@@ -207,7 +207,7 @@ const validationService = {
     // Validate message
     if (!form.message && isNew) {
       errors.message = "Message is required.";
-    } else  if (form.message) {
+    } else if (form.message) {
       if (typeof form.message !== "string") {
         errors.message = "Message must be a string.";
       } else {

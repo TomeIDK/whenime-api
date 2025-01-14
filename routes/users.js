@@ -29,14 +29,6 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  // Model Input
-  //   "username": "api",
-  //   "email": "test@example.com",
-  //   "password": "Pass123",
-  //   "dateOfBirth": "1990-01-01",
-  //   "profilePicture": "pfp.jpg",
-  //   "about": "This is a short bio.",
-  //   "isAdmin": 0,
   const validationErrors = await validationService.validateUser(req.body, true);
 
   if (validationErrors) {
