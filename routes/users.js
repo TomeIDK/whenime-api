@@ -5,8 +5,11 @@ const validationService = require("../services/validationService");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
+  const searchQuery = req.query.search;
+  const limit = parseInt(req.query.limit, 10);
+  const offset = parseInt(req.query.offset, 10);
   try {
-    const users = await userService.getUsers();
+    const users = await userService.getUsers(searchQuery, limit, offset);
     res.json(users);
   } catch (err) {
     console.error("'/users' - Error fetching users:", err);

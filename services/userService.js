@@ -2,9 +2,22 @@ const db = require("./db");
 const bcrypt = require("bcrypt");
 
 const userService = {
-  getUsers: () => {
+  getUsers: (searchQuery = "", limit = 0, offset = 0) => {
+    searchQuery = `%${searchQuery}%`;
+    let query = "SELECT * FROM users WHERE username LIKE ?";
+    const queryParams = [searchQuery];
+
+    if (!isNaN(limit)) {
+      query += " LIMIT ?";
+      queryParams.push(limit);
+      if (!isNaN(offset)) {
+        query += " OFFSET ?";
+        queryParams.push(offset);
+      }
+    }
+
     return new Promise((resolve, reject) => {
-      db.query("SELECT * FROM users", (err, results) => {
+      db.query(query, queryParams, (err, results) => {
         if (err) {
           console.error("Error fetching users:", err);
           reject(err);
@@ -23,6 +36,23 @@ const userService = {
         }
         resolve(results);
       });
+    });
+  },
+
+  searchUsers: (searchQuery) => {
+    searchQuery = `%${searchQuery}%`;
+    return new Promise((resolve, reject) => {
+      db.query(
+        "SELECT username FROM users WHERE username LIKE ?",
+        [searchQuery],
+        (err, results) => {
+          if (err) {
+            console.error("Error finding users:", err);
+            reject(err);
+          }
+          resolve(results);
+        }
+      );
     });
   },
 

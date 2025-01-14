@@ -12,36 +12,167 @@
     <!-- User Routes -->
     <div class="category">
       <h2>User Routes</h2>
+
+      <p>
+        Example request body: {<br />
+        "username": "johndoe",<br />
+        "email": "johndoe@example.com",<br />
+        "password": "securepassword123",<br />
+        "date_of_birth": "2000-01-15",<br />
+        "profile_picture": "johndoe.jpg",<br />
+        "about": "I'm a software engineering student passionate about web
+        development and UX design.",<br />
+        "is_admin": 0<br />
+        }
+      </p>
+
       <div class="list">
         <a href="/users">GET /users - Get all users</a>
+        <p>
+          Query parameters: search &lt;string&gt; | limit &lt;int&gt; | offset
+          &lt;int&gt;
+        </p>
+        <p>
+          Example:
+          <a class="sublink" href="/users?search=me&limit=2&offset=1"
+            >/users?search=me&limit=2&offset=1</a
+          >
+        </p>
+        <p>
+          Response types: id &lt;int&gt; | username &lt;string&gt; |
+          date_of_birth &lt;date&gt; | profile_picture &lt;string&gt; | about
+          &lt;string&gt; | email &lt;string&gt; | email_verified_at &lt;date&gt;
+          | password &lt;string&gt; | is_admin &lt;int&gt; | remember_token
+          &lt;string&gt; | created_at &lt;date&gt; | updated_at &lt;date&gt;
+        </p>
+
         <a href="/users/1">GET /users/{id} - Get user by ID</a>
+        <p>Parameters: id &lt;int&gt;</p>
+        <p>
+          Response types: id &lt;int&gt; | username &lt;string&gt; |
+          date_of_birth &lt;date&gt; | profile_picture &lt;string&gt; | about
+          &lt;string&gt; | email &lt;string&gt; | email_verified_at &lt;date&gt;
+          | password &lt;string&gt; | is_admin &lt;int&gt; | remember_token
+          &lt;string&gt; | created_at &lt;date&gt; | updated_at &lt;date&gt;
+        </p>
+
         <a href="/users">POST /users - Add a user</a>
+        <p>
+          Request body: username &lt;string&gt; | email &lt;string&gt; |
+          password &lt;string&gt; | date_of_birth &lt;date&gt; (optional) |
+          profile_picture &lt;string&gt; (optional) | about &lt;string&gt;
+          (optional) | is_admin &lt;int&gt; (optional)
+        </p>
+
         <a href="/users/99">PATCH /users/{id} - Update user by ID</a>
+        <p>Parameters: id &lt;int&gt;</p>
+        <p>
+          Request body (all optional): username &lt;string&gt; | date_of_birth
+          &lt;date&gt; | profile_picture &lt;string&gt; | about &lt;string&gt; |
+          email &lt;string&gt; | password &lt;string&gt; | is_admin &lt;int&gt;
+        </p>
+
         <a href="/users/99">DELETE /users/{id} - Delete user by ID</a>
+        <p>Parameters: id &lt;int&gt;</p>
       </div>
     </div>
 
     <!-- News Routes -->
     <div class="category">
       <h2>News Routes</h2>
+
+      <p>
+        Example request body: {<br />
+        "title": "New Features Released in Our App",<br />
+        "image": "app-update.jpg",<br />
+        "content": "We are excited to announce new features in our app,
+        including improved UI, enhanced performance, and more customization
+        options."<br />
+        }
+      </p>
+
       <div class="list">
         <a href="/news">GET /news - Get all news</a>
+        <p>
+          Response types: id &lt;int&gt; | title &lt;string&gt; | image
+          &lt;string&gt; | content &lt;string&gt; | created_at &lt;date&gt; |
+          updated_at &lt;date&gt;
+        </p>
+
         <a href="/news/5">GET /news/{id} - Get news by ID</a>
+        <p>Parameters: id &lt;int&gt;</p>
+        <p>
+          Response types: id &lt;int&gt; | title &lt;string&gt; | image
+          &lt;string&gt; | content &lt;string&gt; | created_at &lt;date&gt; |
+          updated_at &lt;date&gt;
+        </p>
+
         <a href="/news">POST /news - Add news item</a>
+        <p>
+          Request Body: title &lt;string&gt; | image &lt;string&gt; | content
+          &lt;string&gt;
+        </p>
+
         <a href="/news/99">PATCH /news/{id} - Update news item by ID</a>
+        <p>Parameters: id &lt;int&gt;</p>
+        <p>
+          Request body (all optional): title &lt;string&gt; | image
+          &lt;string&gt; | content &lt;string&gt;
+        </p>
+
         <a href="/news/99">DELETE /news/{id} - Delete news item by ID</a>
+        <p>Parameters: id &lt;int&gt;</p>
       </div>
     </div>
 
     <!-- Contact Form Routes -->
     <div class="category">
       <h2>Contact Form Routes</h2>
+      <p>
+        Example request body: {<br />
+        "name": "John Doe",<br />
+        "email": "johndoe@example.com",<br />
+        "subject": "Issue with App Login",<br />
+        "message": "I'm unable to log into the app despite entering the correct
+        credentials. Please assist.",<br />
+        "status": "UNREAD"<br />
+        }
+      </p>
+
       <div class="list">
         <a href="/forms">GET /forms - Get all contact forms</a>
+        <p>
+          Response types: id &lt;int&gt; | name &lt;string&gt; | email
+          &lt;string&gt; | subject &lt;string&gt; | message &lt;string&gt; |
+          status &lt;enum('UNREAD', 'READ', 'SOLVED')&gt; | created_at
+          &lt;date&gt; | updated_at &lt;date&gt;
+        </p>
+
         <a href="/forms/1">GET /forms/{id} - Get form by ID</a>
+        <p>Parameters: id &lt;int&gt;</p>
+        <p>
+          Response types: id &lt;int&gt; | name &lt;string&gt; | email
+          &lt;string&gt; | subject &lt;string&gt; | message &lt;string&gt; |
+          status &lt;enum('UNREAD', 'READ', 'SOLVED')&gt; | created_at
+          &lt;date&gt; | updated_at &lt;date&gt;
+        </p>
+
         <a href="/forms">POST /forms - Add contact form submission</a>
+        <p>
+          Request body: name &lt;string&gt; | email &lt;string&gt; | subject
+          &lt;string&gt; | message &lt;string&gt;
+        </p>
+
         <a href="/forms/99">PATCH /forms/{id} - Update form by ID</a>
+        <p>Parameters: id &lt;int&gt;</p>
+        <p>
+          Request body (all optional): name &lt;string&gt; | email
+          &lt;string&gt; | subject &lt;string&gt; | message &lt;string&gt; |
+          status &lt;enum('UNREAD', 'READ', 'SOLVED')&gt;
+        </p>
+
         <a href="/forms/99">DELETE /forms/{id} - Delete form by ID</a>
+        <p>Parameters: id &lt;int&gt;</p>
       </div>
     </div>
   </body>
