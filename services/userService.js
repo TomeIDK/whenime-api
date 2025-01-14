@@ -63,8 +63,12 @@ const userService = {
             if (err) {
               console.error("Error adding user:", err);
               reject(err);
+            } else {
+              resolve({
+                message: "User added successfully",
+                id: results.insertId,
+              });
             }
-            resolve("User added successfully.");
           }
         );
       });
@@ -129,8 +133,19 @@ const userService = {
               if (err) {
                 console.error("Error updating user:", err);
                 reject(err);
+              } else {
+                if (results.affectedRows > 0) {
+                  resolve({
+                    message: "User updated successfully",
+                    affectedRows: results.affectedRows,
+                  });
+                } else {
+                  resolve({
+                    message: "No changes were made",
+                    affectedRows: 0,
+                  });
+                }
               }
-              resolve("User updated successfully.");
             }
           );
         })
@@ -146,8 +161,19 @@ const userService = {
         if (err) {
           console.error(`Error deleting user #${id}:`, err);
           reject(err);
+        } else {
+          if (results.affectedRows > 0) {
+            resolve({
+              message: "User deleted successfully",
+              affectedRows: results.affectedRows,
+            });
+          } else {
+            resolve({
+              message: "No changes were made",
+              affectedRows: 0,
+            });
+          }
         }
-        resolve("User deleted successfully");
       });
     });
   },

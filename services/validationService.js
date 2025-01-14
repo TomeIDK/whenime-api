@@ -80,7 +80,8 @@ const validationService = {
           .toLowerCase();
 
         if (!allowedExtensions.includes(fileExtension)) {
-          errors.profilePicture = "Profile picture must be a JPG or PNG image.";
+          errors.profilePicture =
+            "Profile picture must be a JPG, JPEG or PNG image.";
         }
       }
     }
@@ -105,9 +106,130 @@ const validationService = {
     return Object.keys(errors).length > 0 ? errors : null;
   },
 
-  validateNews: (news, isNew) => {},
+  validateNews: (news, isNew) => {
+    const errors = {};
 
-  validateForm: (form, isNew) => {},
+    // Validate title
+    if (!news.title && isNew) {
+      errors.title = "Title is required.";
+    } else if (news.title) {
+      if (typeof news.title !== "string") {
+        errors.title = "Title must be a string.";
+      } else if (news.title.length < 3) {
+        errors.title = "Title must be at least 3 characters long.";
+      } else if (news.title.length > 50) {
+        errors.title = "Title must not exceed 50 characters.";
+      }
+    }
+
+    // Validate content
+    if (!news.content && isNew) {
+      errors.content = "Content is required.";
+    }
+
+    // Validate image
+    if (isNew && !news.image) {
+      errors.image = "Image is required.";
+    } else if (news.image && typeof news.image === "string") {
+      const allowedExtensions = ["jpg", "jpeg", "png"];
+      const fileExtension = news.image.split(".").pop().toLowerCase();
+
+      if (!allowedExtensions.includes(fileExtension)) {
+        errors.image = "Image must be a JPG, JPEG, or PNG image.";
+      }
+    }
+
+    // Return validation result
+    return Object.keys(errors).length > 0 ? errors : null;
+  },
+
+  validateForm: (form, isNew) => {
+    const reservedWords = ["admin", "user", "support"];
+    const errors = {};
+
+    // Validate name
+    if (!form.name && isNew) {
+      errors.name = "Name is required.";
+    } else  if (form.name) {
+      if (typeof form.name !== "string") {
+        errors.name = "Name must be a string.";
+      } else {
+        if (form.name.length < 3) {
+          errors.name = "Name must be at least 3 characters long.";
+        }
+        if (form.name.length > 30) {
+          errors.name = "Name must not exceed 30 characters.";
+        }
+        if (reservedWords.includes(form.name)) {
+          errors.name = "This name is not allowed.";
+        }
+        if (!/^\S.*\S$|^\S$/.test(form.name)) {
+          errors.name = "Name must not start or end with whitespace.";
+        }
+      }
+    }
+
+    // Validate email
+    if (!form.email && isNew) {
+      errors.email = "Email is required.";
+    } else if (form.email) {
+      if (typeof form.email !== "string") {
+        errors.email = "Email must be a string.";
+      } else {
+        if (!form.email.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) {
+          errors.email = "Email must be a valid email address.";
+        }
+        if (form.email !== form.email.toLowerCase()) {
+          errors.email = "Email must be in lowercase.";
+        }
+        if (form.email.length > 255) {
+          errors.email = "Email must not exceed 255 characters.";
+        }
+      }
+    }
+
+    // Validate subject
+    if (!form.subject && isNew) {
+      errors.subject = "Subject is required.";
+    } else  if (form.subject) {
+      if (typeof form.subject !== "string") {
+        errors.subject = "Subject must be a string.";
+      } else {
+        if (form.subject.length < 3) {
+          errors.subject = "Subject must be at least 3 characters long.";
+        }
+        if (form.subject.length > 255) {
+          errors.subject = "Subject must not exceed 255 characters.";
+        }
+      }
+    }
+
+    // Validate message
+    if (!form.message && isNew) {
+      errors.message = "Message is required.";
+    } else  if (form.message) {
+      if (typeof form.message !== "string") {
+        errors.message = "Message must be a string.";
+      } else {
+        if (form.message.length < 3) {
+          errors.message = "Message must be at least 3 characters long.";
+        }
+        if (form.message.length > 1000) {
+          errors.message = "Message must not exceed 1000 characters.";
+        }
+      }
+    }
+
+    if (!isNew && form.status) {
+      const statusTypes = ["UNREAD", "READ", "SOLVED"];
+      // Validate if status is one of the valid types
+      if (!statusTypes.includes(form.status.toUpperCase())) {
+        errors.status = "Status must be one of: UNREAD, READ, or SOLVED.";
+      }
+    }
+
+    return Object.keys(errors).length > 0 ? errors : null;
+  },
 };
 
 // Simulated uniqueness check functions
