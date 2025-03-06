@@ -21,7 +21,7 @@ const validationService = {
           ", "
         )}.`;
       }
-      // Add uniqueness check (you would replace this with a DB lookup)
+      
       const isUnique = await checkUniqueUsername(user.username);
       if (!isUnique) {
         errors.username = "The username is already taken.";
@@ -36,7 +36,7 @@ const validationService = {
       if (!emailRegex.test(user.email)) {
         errors.email = "Email is invalid.";
       }
-      // Add uniqueness check for email (replace with a DB lookup)
+
       const isEmailUnique = await checkUniqueEmail(user.email);
       if (!isEmailUnique) {
         errors.email = "The email is already taken.";
@@ -102,7 +102,7 @@ const validationService = {
       errors.isAdmin = "isAdmin must be 0 or 1.";
     }
 
-    // Return validation result
+
     return Object.keys(errors).length > 0 ? errors : null;
   },
 
@@ -222,7 +222,7 @@ const validationService = {
 
     if (!isNew && form.status) {
       const statusTypes = ["UNREAD", "READ", "SOLVED"];
-      // Validate if status is one of the valid types
+
       if (!statusTypes.includes(form.status.toUpperCase())) {
         errors.status = "Status must be one of: UNREAD, READ, or SOLVED.";
       }
@@ -232,7 +232,7 @@ const validationService = {
   },
 };
 
-// Simulated uniqueness check functions
+
 async function checkUniqueUsername(username) {
   try {
     const existingUsernames = await dataService.getExistingUsernames();
