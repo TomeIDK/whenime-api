@@ -13,6 +13,3 @@ It is recommended to use Postman to access the routes. If you don't have Postman
    ![Server started on http://127.0.0.1:3000 Connected to the database.](https://i.gyazo.com/3c079e6dd744809bf4ee4d3eef3b0f20.png)
 8. Click the link that pops up in the terminal to view the API documentation.
 9. Congratulations, you have successfully installed the API!
-# Sources
-API Setup: https://chatgpt.com/share/6784f97d-de58-800b-b87f-7eeb3ff919b5  
-Validation: https://chatgpt.com/share/67856747-eb88-800b-a2ec-a36b6279d24c  
